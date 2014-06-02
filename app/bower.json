@@ -1,0 +1,25 @@
+{
+  "name": "empanadapp",
+  "version": "0.0.0",
+  "homepage": "https://github.com/longtrail/empanadapp",
+  "authors": [
+    "Alan Szpigiel <alanszp@gmail.com>",
+    "Kova",
+    "Guido"
+  ],
+  "description": "Contador de empanadas",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": "~1.2.16",
+    "angular-route": "~1.2.16",
+    "angular-animate": "~1.2.16",
+    "angular-touch": "~1.2.16",
+    "q": "~2.0.0",
+    "angular-strap": "~2.0.3"
+  }
+}
