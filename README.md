@@ -1,5 +1,21 @@
 # EMPANADAPP
 
+## PARA QUE SE BAJEN TODO
+Instalen NVM:
+- [Install NVM](https://github.com/creationix/nvm) ( Simple bash script to manage multiple active node.js versions )
+
+Despues van a tener que bajarse la ultima version de `node` y esto les va a traer tmb el `npm`.
+Ahora ponen: 
+```
+  npm install -g bower
+```
+
+Luego instalan todas las dependencias:
+- Desde el root (empanadapp/) ponen: `npm install`
+- Desde la carpeta app (empanadapp/app/) ponen: `bower install`
+
+Esto va a tardar y les va a bajar las dependencias. Despues les explico bien todo.
+
 ## Angular seed
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
