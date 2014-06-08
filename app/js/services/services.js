@@ -82,7 +82,7 @@ app.factory('PersonasService', ["Persona", function(Persona, _){
 }]);
 
 app.factory('Persona', ["EmpanadasService", function(EmpanadasService){
-  function Persona(inombre) {
+  function Persona(nombre) {
     this.nombre = trim(nombre);
     this.id = -1;
     this.empanadas = {};
