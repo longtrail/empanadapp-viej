@@ -3,9 +3,11 @@
 var app = angular.module('empanadapp', ['ngRoute', "ngResource"]);
 
 app.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {templateUrl: 'views/partial1.html'});
-  $routeProvider.when('/view2', {templateUrl: 'views/partial2.html'});
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.when('/main', {templateUrl: 'views/main.html'});
+  $routeProvider.when('/empanadas', {templateUrl: 'views/empanadas.html'});
+  $routeProvider.when('/personas', {templateUrl: 'views/personas.html'});
+  $routeProvider.when('/resumen', {templateUrl: 'views/resumen.html'});
+  $routeProvider.otherwise({redirectTo: '/main'});
 }]);
 
 // No tocar. Es para mejorar seguridad.
