@@ -104,4 +104,6 @@ app.factory('Persona', ["EmpanadasService", function(EmpanadasService){
       return this.empanadas.length
     }
   }
+
+  return Persona
 }]);
