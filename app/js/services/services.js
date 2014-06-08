@@ -26,7 +26,7 @@ app.factory('EmpanadasService', ["lodash", function(_){
       return empanadas;
     },
     getEmpanada: function (id) {
-       _(empanadas).first(function (e) {
+       _(empanadas).find(function (e) {
           return e.id == id
        });
     },
@@ -47,3 +47,4 @@ app.factory('EmpanadasService', ["lodash", function(_){
     }
   };
 }]);
+
