@@ -3,34 +3,32 @@ module.exports = function(config){
     basePath : '../',
 
     files : [
-      'app/lib/angular/angular.js',
-      'app/lib/angular/angular-*.js',
+      'app/bower_components/angular/angular.js',
+      'app/bower_components/angular*/angular*.js',
       'test/lib/angular/angular-mocks.js',
+      'app/bower_components/lodash/dist/lodash.js',
       'app/js/**/*.js',
-      'test/unit/**/*.js',
-      'app/bower_components/q/q2.js'
+      'test/unit/**/*Spec.js'
     ],
       
     exclude : [
-      'app/lib/angular/angular-loader.js',
-      'app/lib/angular/*.min.js',
-      'app/lib/angular/angular-scenario.js',
+    'app/bower_components/angular*/angular*.min*',
+    'app/bower_components/angular-i18n/*'
     ],
 
     autoWatch : true,
 
-    frameworks: ['jasmine', 'chai', 'chai-as-promised'],
+    frameworks: ['mocha','chai'],
 
-    browsers : ['Chrome'],
+    browsers : ['PhantomJS'],
 
     plugins : [
             'karma-junit-reporter',
-            'karma-chrome-launcher',
+            'karma-phantomjs-launcher',
             'karma-firefox-launcher',
-            'karma-jasmine',
             'karma-mocha',
             'karma-chai',
-            'karma-chai-plugins'
+            'phantomjs'
             ],
 
     junitReporter : {

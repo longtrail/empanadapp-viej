@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('empanadapp', ['ngRoute']).constant('_', window._);
+var app = angular.module('empanadapp', ['ngRoute']);
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/main', {templateUrl: 'views/main.html'});
