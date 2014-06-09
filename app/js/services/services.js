@@ -1,7 +1,7 @@
 var app = angular.module('empanadapp');
 
 app.factory('EmpanadasService', ["lodash", function(_){
-  var empanadas = [
+  var predefined = [
     {
       id: 1,
       nombre : 'Carne suave'
@@ -23,22 +23,28 @@ app.factory('EmpanadasService', ["lodash", function(_){
       nombre : "Atun"
     }
   ];
+  var empanadas = _.cloneDeep(predefined);
 
  return {
     getEmpanadas: function () {
       return empanadas;
     },
     getEmpanada: function (id) {
-       window._(empanadas).find(function (e) {
-          return e.id == id
+       return _(empanadas).find(function (e) {
+          return e.id === id
        });
     },
     add: function (nombre) {
-      var max = _(empanadas)
-      .map(function (e){
-        return e.id
-      })
-      .max();
+      if (empanadas.length == 0) {
+        var max = predefined.length
+      }
+      else {
+        var max = _(empanadas)
+        .map(function (e){
+          return e.id
+        })
+        .max();          
+      }
 
       var nueva = {
         id: max + 1,
@@ -48,8 +54,11 @@ app.factory('EmpanadasService', ["lodash", function(_){
       empanadas.push(nueva);
       return nueva;
     },
+    predefinedList: function() {
+      return predefined;
+    },
     clear: function(){
-      empanadas = [];
+      empanadas = _.cloneDeep(predefined);
     }
   };
 }]);

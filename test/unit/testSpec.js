@@ -2,6 +2,56 @@ describe('Service', function() {
   beforeEach(angular.mock.module('empanadapp'));
 
 
+  describe('EmpanadasService', function() {
+
+    it('should add a empanada to the list', inject(function(EmpanadasService) {
+      var cantEmpanadas = EmpanadasService.predefinedList().length;
+      var empanada = EmpanadasService.add("cebolla");
+      empanada.nombre.should.be.equal('cebolla');
+      empanada.id.should.equal(cantEmpanadas + 1);
+      EmpanadasService.getEmpanadas().should.have.length(cantEmpanadas + 1);
+      EmpanadasService.getEmpanadas()[cantEmpanadas].should.equal(empanada)
+    }));
+
+    it('should two a empanada to the list', inject(function(EmpanadasService) {
+      var cantEmpanadas = EmpanadasService.predefinedList().length;
+      var cebolla = EmpanadasService.add("cebolla");
+      var peperoni = EmpanadasService.add("peperoni");
+
+      cebolla.nombre.should.be.equal('cebolla');
+      cebolla.id.should.equal(cantEmpanadas + 1);
+
+      peperoni.nombre.should.be.equal('peperoni');
+      peperoni.id.should.equal(cantEmpanadas + 2);
+      
+      EmpanadasService.getEmpanadas().should.have.length(cantEmpanadas + 2);
+      EmpanadasService.getEmpanadas()[cantEmpanadas].should.equal(cebolla)
+      EmpanadasService.getEmpanadas()[cantEmpanadas + 1].should.equal(peperoni)
+    }));
+
+    it('should have return the desired empanada', inject(function(EmpanadasService) {
+      var cantEmpanadas = EmpanadasService.predefinedList().length;
+      var empanada = EmpanadasService.add("cebolla");
+      var returnedEmpanada = EmpanadasService.getEmpanada(cantEmpanadas + 1);
+      
+      returnedEmpanada.nombre.should.be.equal('cebolla');
+      returnedEmpanada.id.should.equal(cantEmpanadas + 1);
+      returnedEmpanada.should.be.equal(empanada)
+    }));
+
+    it('should have return undefined when the empanada does not exist', inject(function(EmpanadasService) {
+      var returnedEmpanada = EmpanadasService.getEmpanada(100);
+      expect(returnedEmpanada).to.be.undefined;
+    }));
+
+    it('should not have any empanada when initialized', inject(function(EmpanadasService) {
+      var cantEmpanadas = EmpanadasService.predefinedList().length;
+      EmpanadasService.getEmpanadas().should.have.length(cantEmpanadas)
+    }));
+
+  });
+
+
   describe('PersonasService', function() {
 
     it('should add a person to the list', inject(function(PersonasService) {
@@ -9,6 +59,21 @@ describe('Service', function() {
       person.nombre.should.be.equal('juan');
       person.id.should.equal(1);
       PersonasService.getPersonas().should.have.length(1);
+      PersonasService.getPersonas()[0].should.equal(person)
+    }));
+
+    it('should two a person to the list', inject(function(PersonasService) {
+      var juan = PersonasService.add("juan");
+      var pedro = PersonasService.add("pedro");
+      juan.nombre.should.be.equal('juan');
+      juan.id.should.equal(1);
+
+      pedro.nombre.should.be.equal('pedro');
+      pedro.id.should.equal(2);
+      
+      PersonasService.getPersonas().should.have.length(2);
+      PersonasService.getPersonas()[0].should.equal(juan)
+      PersonasService.getPersonas()[1].should.equal(pedro)
     }));
 
     it('should have return the desired person', inject(function(PersonasService) {
