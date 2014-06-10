@@ -1,5 +1,6 @@
 var app = angular.module('empanadapp');
 
+//sacar dependencias de lodash de todos los factories, hacerlo general para toda la app
 app.factory('EmpanadasService', ["lodash", function(_){
   var predefined = [
     {
@@ -25,6 +26,7 @@ app.factory('EmpanadasService', ["lodash", function(_){
   ];
   var empanadas = _.cloneDeep(predefined);
 
+//Aca creo que sacando todo del return, funciona igual
  return {
     getEmpanadas: function () {
       return empanadas;
@@ -39,11 +41,9 @@ app.factory('EmpanadasService', ["lodash", function(_){
         var max = predefined.length
       }
       else {
-        var max = _(empanadas)
-        .map(function (e){
+        var max = _(empanadas).map(function (e){
           return e.id
-        })
-        .max();          
+        }).max();        
       }
 
       var nueva = {
@@ -82,15 +82,12 @@ app.factory('PersonasService', ["Persona", "lodash", function(Persona, _){
           var max = 0
         }
         else {
-          var max = _(personas)
-          .map(function (e){
+          var max = _(personas).map(function (e){
             return e.id
-          })
-          .max();          
+          }).max();          
         }
 
         nuevo.id = max + 1;
-
         personas.push(nuevo);
         return nuevo;
       },
